@@ -18,9 +18,8 @@ public class ConsumerController {
     @GetMapping("/send")
     public String send(){
         //Message 有问题
-        MessageBase.Message message = new MessageBase.Message();
-        //这里message content为空
-        message.toBuilder().setCmd(MessageBase.Message.CommandType.NORMAL)
+        MessageBase.Message message = MessageBase.Message.newBuilder()
+                .setCmd(MessageBase.Message.CommandType.NORMAL)
                 .setContent("hello Netty!!")
                 .setRequestId(UUID.randomUUID().toString())
                 .build();//发送正常消息
